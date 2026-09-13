@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#222">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Lucky Wheel">
+    <link rel="manifest" href="manifest.json">
+    <title>Lucky Wheel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="list-box">
+
+    <h2>Danh sách</h2>
+
+    <div class="add-name">
+        <input
+            type="text"
+            id="nameInput"
+            placeholder="Nhập tên..."
+        >
+
+        <button id="addButton">THÊM</button>
+    </div>
+
+    <div id="nameList"></div>
+
+</div>
+</div>
+    <div class="container">
+
+        <h1>🎡 Lucky Wheel</h1>
+
+        <div class="wheel-container">
+
+            <!-- Vòng quay -->
+            <canvas id="wheel" width="600" height="600"></canvas>
+
+            <!-- Mũi tên quay -->
+            <div id="arrow">
+                <div class="arrow-head"></div>
+                <div class="arrow-body"></div>
+            </div>
+
+            <!-- Tâm -->
+            <div class="center-dot"></div>
+            <!-- bong den -->
+            <div id="lights"></div>
+
+        </div>
+
+        <button id="spinButton">QUAY</button>
+
+        <h2 id="result"></h2>
+
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("./sw.js");
+            });
+        }
+    </script>
+
+</body>
+</html>

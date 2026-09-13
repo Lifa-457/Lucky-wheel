@@ -1,0 +1,339 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #222;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.wheel-container {
+    position: relative;
+
+    width: 620px;
+    height: 620px;
+
+    margin: 0 auto 20px;
+}
+
+/* =========================
+   VÒNG QUAY
+   ========================= */
+
+#wheel {
+            position: absolute;
+
+            width: 600px;
+            height: 600px;
+
+            left: 10px;
+            top: 10px;
+
+            border-radius: 50%;
+
+            border: 7px solid #fff;
+
+            box-shadow:
+                0 0 0 9px #f5b900,
+                0 0 0 14px #111;
+
+            /* Vòng quay giờ là <canvas>, đứng yên; chỉ mũi tên xoay */
+        }
+
+/* =========================
+   MŨI TÊN
+   ========================= */
+
+#arrow {
+    position: absolute;
+
+    width: 0;
+    height: 0;
+
+    left: 50%;
+    top: 50%;
+
+    transform-origin: 0 0;
+
+    z-index: 10;
+
+    transform: rotate(0deg);
+}
+
+/* Thân mũi tên */
+.arrow-body {
+    position: absolute;
+
+    width: 14px;
+    height: 110px;
+
+    background: red;
+
+    left: -7px;
+    top: -110px;
+
+    border-radius: 7px;
+
+}
+
+/* Đầu mũi tên */
+.arrow-head {
+      position: absolute;
+
+            z-index: 20;
+
+            left: 50%;
+            top: -150px;
+
+            transform: translate(-50%, -50%);
+            
+            width: 0;
+            height: 0;
+            
+
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+
+            border-bottom: 100px solid red;
+
+
+
+            transform-origin: 50% 50%;
+}
+
+/* =========================
+   TÂM
+   ========================= */
+
+.center-dot {
+    position: absolute;
+
+    width: 42px;
+    height: 42px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: red;
+
+    border: 5px solid black;
+
+    border-radius: 50%;
+
+    z-index: 20;
+}
+
+/* =========================
+   BUTTON
+   ========================= */
+
+button {
+    padding: 15px 60px;
+
+    font-size: 22px;
+    font-weight: bold;
+
+    border: none;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    background: white;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+#result {
+    color: white;
+}
+
+/* =========================
+   BÓNG ĐÈN
+   ========================= */
+
+.lights {
+    position: absolute;
+
+    width: 620px;
+    height: 620px;
+
+    left: 0px;
+    top: 0px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 15;
+}
+
+.light {
+    position: absolute;
+
+    width: 15px;
+    height: 15px;
+
+    background: #fff;
+
+    border-radius: 50%;
+
+    border: 3px solid #ffd000;
+
+    box-shadow:
+        0 0 8px #fff,
+        0 0 15px #ffd000;
+}
+/* =========================
+    ĐƯỜNG CHIA CÁC Ô
+    ========================= */
+
+
+/* =========================
+   DANH SÁCH TÊN
+   ========================= */
+
+.list-box {
+    width: 400px;
+    margin: 0 auto 20px;
+}
+
+.list-box h2 {
+    color: white;
+}
+
+.add-name {
+    display: flex;
+    gap: 10px;
+}
+
+#nameInput {
+    flex: 1;
+
+    padding: 12px;
+
+    font-size: 16px;
+
+    border: none;
+    border-radius: 8px;
+}
+
+#addButton {
+    padding: 10px 20px;
+
+    font-size: 16px;
+
+    border-radius: 8px;
+}
+
+#nameList {
+    margin-top: 10px;
+}
+
+.name-item {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    background: white;
+
+    padding: 8px 10px;
+
+    margin-bottom: 5px;
+
+    border-radius: 6px;
+
+    font-size: 16px;
+}
+
+.name-item button {
+    padding: 5px 10px;
+
+    font-size: 14px;
+
+    background: #e62838;
+
+    color: white;
+
+    border-radius: 5px;
+}
+
+/* =========================
+   IPHONE / MOBILE
+   ========================= */
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    padding:
+        max(12px, env(safe-area-inset-top))
+        max(12px, env(safe-area-inset-right))
+        max(12px, env(safe-area-inset-bottom))
+        max(12px, env(safe-area-inset-left));
+}
+
+@media (max-width: 700px) {
+    .container {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-top: 8px;
+    }
+
+    .list-box {
+        width: min(92vw, 400px);
+    }
+
+    .wheel-container {
+        width: min(96vw, 620px);
+        height: min(96vw, 620px);
+        margin-bottom: 18px;
+    }
+
+    #wheel {
+        width: calc(min(96vw, 620px) - 20px);
+        height: calc(min(96vw, 620px) - 20px);
+        left: 10px;
+        top: 10px;
+    }
+
+    .lights {
+        width: min(96vw, 620px);
+        height: min(96vw, 620px);
+    }
+
+    .light {
+        width: 11px;
+        height: 11px;
+        border-width: 2px;
+    }
+
+    #spinButton {
+        padding: 13px 48px;
+        font-size: 20px;
+    }
+}
